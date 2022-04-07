@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 using namespace std;
 void LetturaFile()
 {
@@ -12,7 +13,7 @@ void LetturaFile()
         while(!Inputfile.eof())
         {
         	getline (Inputfile,stringa, ' \n');
-            cout << strina;
+            cout << stringa;
         }
     }
 
