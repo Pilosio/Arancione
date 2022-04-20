@@ -3,7 +3,7 @@
 
 using namespace std;
 //dichiarazione
-    struct anagrafiche{
+    struct anagrafiche{ 
         int idPersona;
         string Cognome;
         string Nome;
@@ -12,3 +12,4 @@ using namespace std;
         string Sigla_provincia;
         string Telefono;
     };
+
