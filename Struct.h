@@ -12,5 +12,3 @@ using namespace std;
         string Sigla_provincia;
         string Telefono;
     };
-
-    anagrafiche arr[100];
