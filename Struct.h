@@ -11,5 +11,5 @@ using namespace std;
         string Localita;
         string Sigla_provincia;
         string Telefono;
-    };
+    };  
 
