@@ -17,5 +17,5 @@ int main(){
     int dim =100;           //metto dim=100 per esempio
     anagrafiche arr[dim];   //creao array chiamato arr
 
-    bubble_Sort(arr, dim);  //faccio il bubble sort
+    bubble_Sort(arr, dim);  //faccio il bubble sort 
 }
