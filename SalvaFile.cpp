@@ -21,7 +21,7 @@ void Salvataggio(ifstream &Salva, string legge)
 
 int main()
 {
-    Salvataggio(Salva,Legge)
+    Salvataggio(Salva,Legge);
 
     return 0;
 }
