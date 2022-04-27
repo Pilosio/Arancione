@@ -1,0 +1,15 @@
+#include <iostream>
+#include <string>
+
+//dichiarazione
+    struct anagrafiche{
+        int idPersona;
+        string Cognome;
+        string Nome;
+        string Indirizzo;
+        string Localita;
+        string Sigla_provincia;
+        string Telefono;
+    };
+
+

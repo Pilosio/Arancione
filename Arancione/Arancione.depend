@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1651052247 source:c:\users\in3b12\desktop\git\portablegit\arancione\arancione\arancione_main.cpp
+	<iostream>
+	"arancio_funzioni.h"
+
+1651052137 c:\users\in3b12\desktop\git\portablegit\arancione\arancione\menutariq.cpp
+	<iostream>
+
+1651052199 source:c:\users\in3b12\desktop\git\portablegit\arancione\arancione\menutariq.cpp
+	<iostream>
+	"arancio_funzioni.h"
+
+1651052199 c:\users\in3b12\desktop\git\portablegit\arancione\arancione\arancio_funzioni.h
+
