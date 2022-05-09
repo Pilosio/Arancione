@@ -50,7 +50,7 @@ void menu()
             break;
         case 4:
             Nome_funzione;
-            cout << "Inserisci il ID da eliminare: ";
+            cout << "Inserisci l' ID da eliminare: ";
             cin >> id;
             Nome_funzione;
             Nome_funzione per vizualizzare;
