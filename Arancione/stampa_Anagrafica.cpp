@@ -5,13 +5,13 @@
 
 using namespace std;
 
-void stampaAnagrafica(){
+void stampaAnagrafica(anagrafiche arr[]){
 
 	cout<<"ID : "<<anagrafiche.idPersona<<endl;
 	cout<<"Cognome : "<<anagrafiche.Cognome<<endl;
 	cout<<"Nome : "<<anagrafiche.Nome<<endl;
 	cout<<"Indirizzo : "<<anagrafiche.Indirizzo<<endl;
-	cout<<"Località : "<<anagrafiche.Localita<<endl;
+	cout<<"LocalitÃ  : "<<anagrafiche.Localita<<endl;
 	cout<<"Sigla Provincia : "<<anagrafiche.Sigla_provincia<<endl;
 	cout<<"Numero di Telefono : "<<anagrafiche.Telefono<<endl;
 
