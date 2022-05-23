@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1653237083 source:c:\users\manu\desktop\3bia\arancione\pdp\arancio\funzioniarancio.cpp
+	<iostream>
+	<fstream>
+	<string>
+	"funzioniArancio.h"
+
+1653235870 c:\users\manu\desktop\3bia\arancione\pdp\arancio\funzioniarancio.h
+	<vector>
+
+1653237208 source:c:\users\manu\desktop\3bia\arancione\pdp\arancio\main_arancio.cpp
+	<iostream>
+	<string>
+	<fstream>
+	<locale>
+	<vector>
+	<cstdlib>
+	"funzioniArancio.h"
+

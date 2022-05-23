@@ -1,0 +1,9 @@
+1;Corona;Matteo;via A;citt… A;PN;1234;
+2;Rossi;Marco;via B;citt… B;PN;1234;
+3;Verdi;Sara;via C;citt… C;PN;1234;
+4;Blu;Anna;via D;citt… D;PN;1234;
+5;Gialli;Giulia;via E;citt… E;PN;1234;
+6;Marroni;Pietro;via F;citt… F;PN;1234;
+7;Azzurri;Piero;via G;citt… G;PN;1234;
+8;Bianchi;Mauro;via H;citt… H;PN;1234;
+per fare il salvataggio nel file basta fare il cout del file con un ifstream dello stesso tipo file nome ("progetto realta il testo.txt") fai while e cout del file e lo salvera.
