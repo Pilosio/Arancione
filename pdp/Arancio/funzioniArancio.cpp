@@ -21,21 +21,22 @@ std::cout << "\n\n\t\t------ANAGRAFICHE ------\n";
  return sceltaMenu;
 }
 
-bool GestioneSceltaMenu(int sceltaMenu, std::vector <Anagrafica> vectAna){
+bool GestioneSceltaMenu(int sceltaMenu, std::vector <Anagrafica> &vectAna){
 
  bool fineProgramma= false;
  int idAna,idxAnaTrovato;
- ofstream fl_Dati_Out;
+ std::ofstream fl_Dati_Out;
 
  switch(sceltaMenu){
         case 1:
             //inserimento nuova Anagrafica;
+            insertAnagrafica(vectAna);
             break;
         case 2:
 
             std::cout << "Inserisci l'ID Anagrafica che vuoi cercare:  ";
-            std::cin >> IdAna;
-            IDtrovato = ricercaIdAuto(listaDati, IDcercato);
+            std::cin >> idAna;
+            idxAnaTrovato = SeachAnaById(vectAna,idAna);
             if (idxAnaTrovato!=-1)
                 showAnagrafica(vectAna,idxAnaTrovato);
             else
@@ -43,7 +44,7 @@ bool GestioneSceltaMenu(int sceltaMenu, std::vector <Anagrafica> vectAna){
             break;
         case 3:
             std::cout << "Inserisci l'ID della persona che vuoi eliminare:  ";
-            std::cin >> IdAna;
+            std::cin >> idAna;
             idxAnaTrovato= SeachAnaById(vectAna, idAna);
             if (idxAnaTrovato==-1)
                 std::cout << "[!] ID Persona non presente\n";
@@ -55,7 +56,13 @@ bool GestioneSceltaMenu(int sceltaMenu, std::vector <Anagrafica> vectAna){
             break;
         case 5:
             //salvataggio modifiche;
-
+            fl_Dati_Out.open("Anagrafiche.csv");
+            if (fl_Dati_Out.fail()){
+                std::cout <<"errore apertura file per scrittura"<<std::endl;
+                exit(0);
+            }
+            saveAnagrafiche(fl_Dati_Out,vectAna);
+            fl_Dati_Out.close();
             break;
         case 6:
             fineProgramma=true;
@@ -91,7 +98,7 @@ void LoadDati(std::istream &fl_DatiIn, std::vector<Anagrafica> &vectAna){
      }//while
 }
 
-void showAnagrafica(std::vector<Anagrafica> &vectAna;int idAna){
+void showAnagrafica(std::vector<Anagrafica> &vectAna,int idAna){
 
     std::cout << "|" << vectAna[idAna].idPersona << "\t";
     std::cout << "|" << vectAna[idAna].cognome << "\t\t";
@@ -119,34 +126,34 @@ int SeachAnaById(std::vector<Anagrafica> &vectAna, int idAna){
 
 int iMid, iStart, iEnd;
 iStart=0;
-iEnd= vectAna.size();
+iEnd= vectAna.size()-1;
 
 iMid= (iStart+iEnd)/2;
-while (!iEnd < iStart){
+while (iEnd >= iStart){
   if(vectAna[iMid].idPersona== idAna)
         return iMid;
   else if (vectAna[iMid].idPersona > idAna){
-    iStart= iMid+1;
+    iEnd= iMid-1;
     iMid= (iStart+iEnd)/2;
   }
   else{
-    iEnd= iMid-1;
-    iMid= (iStart+iEnd)/2
+    iStart= iMid+1;
+    iMid= (iStart+iEnd)/2;
   }
-   return -1; non trovato
-}
+}//while
+return -1; //non trovato
 }//SeachAnaById
 
-void deleteAna(std::vector <Anagrafica> vectAna, int idxAna){
+void deleteAna(std::vector <Anagrafica> &vectAna, int idxAna){
 int len;
   len= vectAna.size();
   for(int i=idxAna; i <len-1;i++ ){
-    swap(vectAna[i], vectAna[i+1]);
+    std::swap(vectAna[i], vectAna[i+1]);
   } //for
-  vectAna.pop_back(len-1);
+  vectAna.pop_back();
 }//deleteAna
 
-void sortAnagraficheById(std::vector <Anagrafica> vectAna){
+void sortAnagraficheById(std::vector <Anagrafica> &vectAna){
  //per sort viene utilizzato l'goritmo di ordinamento BubbleSort
 int len, i,j;
 bool isSwap;
@@ -154,8 +161,8 @@ len= vectAna.size();
 for (i=0; i <len; i++){
  isSwap= false;
  for(j=0; j<len;j++){
-   if(vectAna[j]> vectAna[j+1]){
-        swap(vectAna[j],vectAna[j+1]);
+   if(vectAna[j].idPersona> vectAna[j+1].idPersona){
+        std::swap(vectAna[j],vectAna[j+1]);
         isSwap= true;
    }
  }//for j
@@ -165,34 +172,43 @@ for (i=0; i <len; i++){
 
 }//sortAnagrafiche
 
-void insertAnagrafica(std::vector<Anagrafica> vectAna, Anagrafica Ana){
-
-
+void insertAnagrafica(std::vector<Anagrafica> &vectAna){
+Anagrafica tempAna;
+tempAna.idPersona= vectAna.size()+1;
+std::cin.ignore();
+std::cout<<"Inserire cognome: ";
+getline(std::cin,tempAna.cognome);
+std::cout<<"Inserire nome: ";
+getline(std::cin,tempAna.nome);
+std::cout<<"Inserire indirizzo: ";
+getline(std::cin,tempAna.indirizzo);
+std::cout<<"Inserire localita: ";
+getline(std::cin,tempAna.localita);
+std::cout<<"Inserire sigla provincia: ";
+getline(std::cin,tempAna.sigla_provincia);
+std::cout<<"Inserire telefono: ";
+getline(std::cin,tempAna.telefono);
+vectAna.push_back(tempAna);
 }//insertAnagrafica
 
-void saveAnagrafiche(std::ofstream &fl_DatiOut, std::vector <Anagrafica> vectAna){
+void saveAnagrafiche(std::ofstream &fl_DatiOut, std::vector <Anagrafica> &vectAna){
 
-fl_DatiOut.open("Anagrafiche.csv");
-if(fl_DatiOut.fail()){
-    cout<<"errore apertura file Anagrafiche.csv"<< endl;
-}
 //intestazione
-cout<<idPersona<<";";
-  cout<<cognome<<";";
-  cout<<nome<<";";
-  cout<<indirizzo<<";";
-  cout<<localita<<";";
-  cout<<sigla_provincia<<";";
-  cout<<telefono<<endl;
+fl_DatiOut<<"idPersona;";
+  fl_DatiOut<<"cognome;";
+  fl_DatiOut<<"nome;";
+  fl_DatiOut<<"indirizzo;";
+  fl_DatiOut<<"localita;";
+  fl_DatiOut<<"sigla_provincia;";
+  fl_DatiOut<<"telefono"<<std::endl;
 
 for (int i= 0;i< vectAna.size(); i++){
-  cout<<vectAna[i].idPersona<<";";
-  cout<<vectAna[i].cognome<<";";
-  cout<<vectAna[i].nome<<";";
-  cout<<vectAna[i].indirizzo<<";";
-  cout<<vectAna[i].localita<<";";
-  cout<<vectAna[i].sigla_provincia<<";";
-  cout<<vectAna[i].telefono<<endl;
+  fl_DatiOut<<vectAna[i].idPersona<<";";
+  fl_DatiOut<<vectAna[i].cognome<<";";
+  fl_DatiOut<<vectAna[i].nome<<";";
+  fl_DatiOut<<vectAna[i].indirizzo<<";";
+  fl_DatiOut<<vectAna[i].localita<<";";
+  fl_DatiOut<<vectAna[i].sigla_provincia<<";";
+  fl_DatiOut<<vectAna[i].telefono<<std::endl;
 }
-
 }//saveAnagrafiche

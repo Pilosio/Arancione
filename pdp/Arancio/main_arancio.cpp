@@ -11,6 +11,7 @@ using namespace std;
 
 int main(){
     ifstream fileDatiIn;
+    ofstream fileDatiout;
     vector <Anagrafica> vectAnagrafiche;
     int sceltaMenu;
     bool fineProgramma;
@@ -41,9 +42,16 @@ int main(){
                 cin >>sceltaSave;
                 sceltaSave= toupper(sceltaSave);
             } while (sceltaSave != 'S' && sceltaSave != 'N');
-            if (sceltaSave == 'S')
+            if (sceltaSave == 'S'){
                 cout<<"salvo";
-               // salvaDati(listaDati, fileDati);
+                fileDatiout.open("Anagrafiche.csv");
+                if( fileDatiout.fail()){
+                    cout<<"errore apertua file in scrittura"<<endl;
+                    exit(0);
+                }
+                saveAnagrafiche(fileDatiout, vectAnagrafiche);
+                fileDatiout.close();
+            }
      }
     }//while
     std::cout << "Chiusura programma. . .";

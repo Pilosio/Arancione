@@ -13,14 +13,14 @@ struct Anagrafica{
     };
 
 int showMenu();
-bool GestioneSceltaMenu(int scelta, std::vector <Anagrafica> vectAna);
+bool GestioneSceltaMenu(int scelta, std::vector <Anagrafica> &vectAna);
 void LoadDati(std::istream &fl_DatiIn, std::vector<Anagrafica> &vectAna);
 void showAnagrafiche(std::vector <Anagrafica> &vectAna);
-void showAnagrafica(std::vector<Anagrafica> &vectAna;int idAna);
+void showAnagrafica(std::vector<Anagrafica> &vectAna,int idAna);
 int SeachAnaById(std::vector<Anagrafica> &vectAna, int idAna);
-void deleteAna(std::vector <Anagrafica> vectAna, int idAna);
-void sortAnagrafiche(std::vector <Anagrafica> vectAna);
-void insertAnagrafica(std::vector<Anagrafica> vectAna, Anagrafica Ana);
-void saveAnagrafiche(std::ofstream &fl_DatiOut, std::vector <Anagrafica> vectAna);
+void deleteAna(std::vector <Anagrafica> &vectAna, int idAna);
+void sortAnagrafiche(std::vector <Anagrafica> &vectAna);
+void insertAnagrafica(std::vector<Anagrafica> &vectAna);
+void saveAnagrafiche(std::ofstream &fl_DatiOut, std::vector <Anagrafica> &vectAna);
 
 #endif // FUNZIONIARANCIO_H_INCLUDED
