@@ -12,3 +12,14 @@
 
 1651052199 c:\users\in3b12\desktop\git\portablegit\arancione\arancione\arancio_funzioni.h
 
+1653205023 source:c:\users\manu\desktop\3bia\arancione\arancione\arancione_main.cpp
+	<iostream>
+	<fstream>
+	"arancio_funzioni.h"
+
+1653205023 c:\users\manu\desktop\3bia\arancione\arancione\arancio_funzioni.h
+
+1653205023 source:c:\users\manu\desktop\3bia\arancione\arancione\menutariq.cpp
+	<iostream>
+	"arancio_funzioni.h"
+
